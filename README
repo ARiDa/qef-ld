@@ -1,0 +1,6 @@
+QEF - Query Evaluation Framework.
+
+QEF is a framework where users can define and execute their requests.
+It is derived from CoDIMS (Configurable Data Integration Middleware System).
+CoDIMS is a middleware environment for the generation of adaptable and configurable data integration middleware systems.
+

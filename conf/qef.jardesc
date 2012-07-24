@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="qefweb/lib/qef.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/qef/conf/qef.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.types"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.optimizer"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.helper"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.function.tcp"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.request"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.algebraic.hash"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.algebraic.hash.temporal"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.transactionMonitor"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.relational.io"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.discovery"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.sparql.operator"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;org.globus.examples.stubs.DQEEService_instance"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.operator"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.dataSource"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.relational.control.exchange"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.discovery.datasource"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.datastructure"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.connection"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.operator.modules"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.operator"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.distributed"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;org.deri.wsmo4j.common"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.initialization"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.io"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.datasource"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.test"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.operator.control"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;org.globus.examples.stubs.DQEEService_instance.service"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.algebraic.hash.spatial"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.predicate.evaluator"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.query.sparql"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.algebraic"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.query"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.predicate.evaluator.datanodes"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.control"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.function.tcp.structure"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.cacheManager"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.types.rdf"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.sparql.datasource"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.discovery.operator"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.blackBoard"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qep"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.trajectory.predicate.evaluator.operators"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.relational"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;org.globus.examples.stubs.DQEEService_instance.bindings"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.exceptions.shutdown"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.sparql"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.discovery.datasource.dataSourceWsmoDB"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.util"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.config"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.scheduler"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.qeef.operator.algebraic"/>
+        <javaElement handleIdentifier="=qef/CoDIMS-tcp\/src&lt;ch.epfl.codimsd.catalog"/>
+    </selectedElements>
+</jardesc>

@@ -1,0 +1,9 @@
+*.log
+*~
+*.lock
+*.lck
+*.swp
+*.out
+CoDIMS-tcp/build/
+results.txt
+log/*
