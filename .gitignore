@@ -7,3 +7,6 @@
 CoDIMS-tcp/build/
 results.txt
 log/*
+codims-home/logs/
+codims-home/DerbyCatalog/*
+codims-home/DerbyCatalog/log/*
