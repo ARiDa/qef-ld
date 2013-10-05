@@ -253,7 +253,7 @@ public class QueryManagerImpl extends Thread {
 		long maxTime = Long.MIN_VALUE;
 		long sumTime = 0;
 
-		for (int i=0; i <= numberOfExecutions; i++) {
+		for (int i=1; i <= numberOfExecutions; i++) {
 
 			// Executes the request.
 			queryManager.executeRequest(paramNames, paramValues);
@@ -273,13 +273,7 @@ public class QueryManagerImpl extends Thread {
 			System.out.println(MemMon.memoryInfo());
 			MemMon.setMsg("");
 			
-			// Do not use the first result
-			if (i == 0) {
-				System.out.println("Execution #0: Time=" + executionTime + ", Results=" + results + " (Not considered)");
-				continue;
-			} else {
-				System.out.println("Execution #" + i + ": Time=" + executionTime + ", Results=" + results);
-			}
+			System.out.println("Execution #" + i + ": Time=" + executionTime + ", Results=" + results);
 				
 
 			if (executionTime < minTime) {
