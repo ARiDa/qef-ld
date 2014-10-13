@@ -58,6 +58,7 @@ public class AppConfig {
         logger.info("CATALOG_PATH: " + CATALOG_PATH);
         logger.info("CATALOG_URL: " + CATALOG_URL);
         logger.info("OUTPUT_DIR: " + OUTPUT_DIR);
+        logger.info("RESULTS_FILE: " + RESULTS_FILE);
     }
     
     public static String getRootPath() {

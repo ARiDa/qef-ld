@@ -26,10 +26,10 @@
             <Name>Service</Name>
             <ParameterList>
                 <DataSourceName>SparqlEndpoint</DataSourceName>
-                <ServiceURI>http://www4.wiwiss.fu-berlin.de/diseasome/sparql</ServiceURI>
+                <ServiceURI>http://wifo5-03.informatik.uni-mannheim.de/diseasome/sparql</ServiceURI>
                 <SPARQLQuery>
                 <![CDATA[
-					PREFIX diseasome: <http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/>
+					PREFIX diseasome: <http://wifo5-04.informatik.uni-mannheim.de/diseasome/resource/diseasome/> 
 					select * where{
 						   ?ds diseasome:possibleDrug ?dg .
 					   filter regex( str(?dg),"dailymed" )
@@ -43,10 +43,10 @@
             <Name>Service</Name>
             <ParameterList>
                 <DataSourceName>SparqlEndpoint</DataSourceName>
-                <ServiceURI>http://www4.wiwiss.fu-berlin.de/dailymed/sparql</ServiceURI>
+                <ServiceURI>http://wifo5-03.informatik.uni-mannheim.de/dailymed/sparql</ServiceURI>
                 <SPARQLQuery>
                 <![CDATA[
-					PREFIX dailymed: <http://www4.wiwiss.fu-berlin.de/dailymed/resource/dailymed/>
+					PREFIX dailymed: <http://wifo5-04.informatik.uni-mannheim.de/dailymed/resource/dailymed/>
 					select * where{
 						?dg dailymed:fullName ?dgn .
 					}
