@@ -4,9 +4,10 @@
 *.lck
 *.swp
 *.out
-CoDIMS-tcp/build/
-results.txt
-log/*
-codims-home/logs/
 codims-home/DerbyCatalog/*
 codims-home/DerbyCatalog/log/*
+/target/
+.DS_Store
+.classpath
+.project
+.settings

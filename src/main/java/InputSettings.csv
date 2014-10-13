@@ -1,0 +1,42 @@
+Input name,Input value1,,
+Experiment name,E1,,
+Total number of users,100,,
+Total number of reports,500,,
+Number of web services,5,,
+Percentage of web services to be monitored by trusted reports,4,,
+Length of report time window,5,,
+Number of generated queries,1,,
+Maximum number of QoS concepts,10,,
+Maximum number of contexts per concept,3,,
+Percentage of trusted users,0.1,,
+Percentage of trusted reports,0.1,,
+Percentage of honest users,25.9,,
+Percentage of honest reports,25.9,,§
+Percentage of badmouthing users,49.33333333,,
+Percentage of badmouthing reports,49.33333333,,
+Percentage of advertising users,12.33333333
+Percentage of advertising reports,12.33333333
+Percentage of uncertained users with random behaviors,12.33333333
+Number of groups of uncertained users,5
+Magic number to partition the services to be wrongly reported,3
+Time difference threshold value to determine the comparability of 2 reports,4
+Threshold value of squared distance between two reports to determine that they are similar,0.03
+Threshold value of squared distance between two reports to determine that they are separated,0.03
+Number of report that a user should produce to be considered as stable,50
+Number of different time points that user should appear in different reports  in order to be considered as stable,3
+Minimal number of report comparisons to evaluate user behavior,4
+Minimal ratio of report comparisons to conclude that a user is honest,0.75
+Minimal ratio of report comparisons to conclude that a user is cheating,0.75
+Maximal number of clusters per category of reports,5
+Maximal number of iterations in the clustering algorithm,100
+Variance of the changes in quality conformance of all services,0.01
+Mean of quality conformance changes of good services,0.0001
+Mean of quality conformance changes of stable services,0
+Mean of quality conformance changes of bad services,-0.0001
+Variance of difference between real and cheating reported values of quality conformance ,0.25
+Variance of difference between real and trustly-reported values of quality conformance,0.0001
+Mean of difference between real and trustly-reported values of quality conformance,0
+Variance of difference between real and honestly-reported values of quality conformance,0.0001
+Mean of difference between real and honestly-reported values of quality conformance,0
+Mean of difference between real and badmouthingly-reported values of quality conformance,-0.45
+Mean of difference between real and advertisingly-reported values of quality conformance,0.25
