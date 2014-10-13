@@ -6,8 +6,9 @@
 *.out
 codims-home/DerbyCatalog/*
 codims-home/DerbyCatalog/log/*
-/target/
+target
 .DS_Store
 .classpath
 .project
 .settings
+bin
