@@ -1,6 +1,0 @@
-TODO:
-- Usar catálogo em arquivo e não no banco de dados.
-- Simplificar o uso de um plano de consulta específico.
-  Bastaria fornecer o nome do plano.
-- O tempo de carregamento do plano é muito grande e deve ser otimizado.
-- 

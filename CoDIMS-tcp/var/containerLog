@@ -1,2 +1,0 @@
-ts=2009-09-03T08:33:05.053-03:00  event=org.globus.container.start
-ts=2009-09-03T08:33:05.618-03:00  event=org.globus.container.end status=-1 msg="[JWSCORE-114] Failed to start container: [JWSCORE-200] Container failed to initialize [Caused by: org.apache.axis.ConfigurationException: Error processing configuration file: /opt/queroQuero/gt4/etc/globus_wsrf_deployment/server-config.wsddjava.io.FileNotFoundException: /opt/queroQuero/gt4/etc/globus_wsrf_deployment/server-config.wsdd (Permission denied)]"
