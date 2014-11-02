@@ -47,6 +47,7 @@ public class SetBindJoinResultProcessor implements Runnable {
 		params.put("joinQueryManipulation", this.setBindJoin.getJoinQueryManipulation());
         params.put("leftTuples", leftTuplesMap.values()); // Collection of lists
 		this.rightProducer = this.setBindJoin.getProducer(SetBindJoin.RIGHT).cloneOperator(params);
+		this.rightProducer.open();
 //		this.startTime = startTime;
 	}
 	

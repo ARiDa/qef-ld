@@ -51,7 +51,14 @@
 		</op:Operator>
 
 
-		<op:Operator id="5" prod="0" type="Scan" numberTuples="?">
+		<op:Operator id="5" prod="7,8,9" type="">
+			<Name>Union</Name>
+			<ParameterList>
+				<useThreads>false</useThreads>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="6" prod="0" type="Scan" numberTuples="?">
 			<Name>Service</Name>
 			<ParameterList>
 				<DataSourceName>SparqlEndpoint</DataSourceName>
@@ -67,13 +74,6 @@
 			</ParameterList>
 		</op:Operator>
 		
-		<op:Operator id="6" prod="7,8,9" type="">
-			<Name>Union</Name>
-			<ParameterList>
-				<useThreads>false</useThreads>
-			</ParameterList>
-		</op:Operator>
-
 		
 		<op:Operator id="7" prod="0" type="Scan" numberTuples="?">
 			<Name>Service</Name>
