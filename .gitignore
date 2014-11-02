@@ -4,8 +4,6 @@
 *.lck
 *.swp
 *.out
-codims-home/DerbyCatalog/*
-codims-home/DerbyCatalog/log/*
 target
 .DS_Store
 .classpath
