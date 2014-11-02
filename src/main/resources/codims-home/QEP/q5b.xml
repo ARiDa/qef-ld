@@ -1,85 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-     ********************************************************************************************************
-     The local Initial Query Execution Plan (QEP), ie. no remote operations
-     ********************************************************************************************************
-     helpdesk@linea.gov.br --> 
-<QEPTemplate xmlns="http://giga03.lncc.br/DIP/WP4/CoDIMS-D" xmlns:op="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/Operator" xmlns:qep="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/QEP">
-	
+<QEPTemplate xmlns="http://giga03.lncc.br/DIP/WP4/CoDIMS-D"
+	xmlns:op="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/Operator" xmlns:qep="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/QEP">
 	<qep:QEP type="Initial">
 		<op:Operator id="1" prod="2" type="">
 			<Name>Project</Name>
 			<ParameterList>
-			     <Variables>label, pub_title</Variables>
+				<Variables>id_taxon, id_reg</Variables>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="2" prod="3,4" type="">
+			<Name>SetBindJoin</Name>
+			<ParameterList>
+				<maxActiveThreads>0</maxActiveThreads>
+				<blockSize>2</blockSize>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="3" prod="5,6" type="">
+			<Name>SetBindJoin</Name>
+			<ParameterList>
+				<maxActiveThreads>0</maxActiveThreads>
+				<blockSize>2</blockSize>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="4" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-taxon/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+				PREFIX pref: <http://localhost:2020/vocab/>
+                select ?id_taxon ?name ?synonymous ?predator where{
+		            ?id_taxon pref:peld_taxon_scientific_name  ?name  .
+		            optional {
+		                ?id_taxon pref:peld_taxon_is_synonimous_of ?id_synonymous .
+		                ?id_synonymous pref:peld_taxon_popular_name  ?synonymous
+		            }
+		            optional {
+		                ?chain       pref:peld_taxon_trophic_chain_id_prey_taxon     ?id_taxon .
+		                ?chain       pref:peld_taxon_trophic_chain_id_predator_taxon ?id_predator .
+		                ?id_predator pref:peld_taxon_scientific_name                 ?predator  .
+		            }
+		        }
+                ]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+
+
+		<op:Operator id="5" prod="7,8,9" type="">
+			<Name>Union</Name>
+			<ParameterList>
+				<useThreads>false</useThreads>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="6" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-region/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+				PREFIX pref: <http://localhost:2020/vocab/>
+				select ?id_reg where {
+		            ?id_reg pref:peld_region_name_reg 'Paqueta' .
+        		}
+        		]]>
+				</SPARQLQuery>
 			</ParameterList>
 		</op:Operator>
 		
-        <op:Operator id="2" prod="3,4,5" type="">
-            <Name>Union</Name>
+		
+		<op:Operator id="7" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
 			<ParameterList>
-			     <useThreads>true</useThreads>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-plankton/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+                          PREFIX pref: <http://localhost:2020/vocab/>
+                          select distinct ?id_taxon ?id_reg where{
+		                    ?s pref:peld_analysis_id_taxon ?id_taxon .
+		                    ?s pref:peld_analysis_id_collect ?id_an .
+		                    ?id_an pref:peld_collect_local ?id_reg .
+		                    ?id_an pref:peld_date 2004
+                		}
+                ]]>
+				</SPARQLQuery>
 			</ParameterList>
-        </op:Operator>
-		
-        <op:Operator id="3" prod="0" type="Scan" numberTuples="?">
-            <Name>Service</Name>
-            <ParameterList>
-                <DataSourceName>SparqlEndpoint</DataSourceName>
-                <ServiceURI>http://dblp.l3s.de/d2r/sparql</ServiceURI>
-                <SPARQLQuery>
+		</op:Operator>
+		<op:Operator id="8" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-catfish/sparql</ServiceURI>
+				<SPARQLQuery>
                 <![CDATA[
-					prefix dc:   <http://purl.org/dc/elements/1.1/>
-					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-					select * where {
-						?publication dc:creator ?dblp_researcher ;
-									dc:title ?pub_title .
-						?dblp_researcher rdfs:label ?label ;
-						FILTER regex(?label, "^A")
-					} limit 100
+                PREFIX pref: <http://localhost:2020/vocab/>
+                select distinct ?id_taxon ?id_reg where {
+                    ?s pref:peld_id_taxon ?id_taxon .
+                    ?s pref:peld_collect_local ?id_reg .
+                    ?s pref:peld_collect_date 2004 .
+                }
                 ]]>
-                </SPARQLQuery>
-            </ParameterList>
-        </op:Operator>      
-
-        <op:Operator id="4" prod="0" type="Scan" numberTuples="?">
-            <Name>Service</Name>
-            <ParameterList>
-                <DataSourceName>SparqlEndpoint</DataSourceName>
-                <ServiceURI>http://dblp.l3s.de/d2r/sparql</ServiceURI>
-                <SPARQLQuery>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+		<op:Operator id="9" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-fish/sparql</ServiceURI>
+				<SPARQLQuery>
                 <![CDATA[
-					prefix dc:   <http://purl.org/dc/elements/1.1/>
-					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-					select * where {
-						?publication dc:creator ?dblp_researcher ;
-									dc:title ?pub_title .
-						?dblp_researcher rdfs:label ?label ;
-						FILTER regex(?label, "^B")
-					} limit 100
+                PREFIX pref: <http://localhost:2020/vocab/>
+                select distinct ?id_taxon ?id_reg where {
+	                ?s pref:peld_fish_analysis_id_taxon ?id_taxon.
+	                ?s pref:peld_analysis_id_collect ?id_an .
+	                ?id_an pref:peld_fish_local_collect ?id_reg.
+	                ?id_an pref:peld_date_collect 2004 .
+                }
                 ]]>
-                </SPARQLQuery>
-            </ParameterList>
-        </op:Operator>
-              
-        <op:Operator id="5" prod="0" type="Scan" numberTuples="?">
-            <Name>Service</Name>
-            <ParameterList>
-                <DataSourceName>SparqlEndpoint</DataSourceName>
-                <ServiceURI>http://dblp.l3s.de/d2r/sparql</ServiceURI>
-                <SPARQLQuery>
-                <![CDATA[
-					prefix dc:   <http://purl.org/dc/elements/1.1/>
-					PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-					select * where {
-						?publication dc:creator ?dblp_researcher ;
-									dc:title ?pub_title .
-						?dblp_researcher rdfs:label ?label ;
-						FILTER regex(?label, "^C")
-				  } limit 100
-                ]]>
-                </SPARQLQuery>
-            </ParameterList>
-        </op:Operator>      
-		
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
 	</qep:QEP>
 </QEPTemplate>
