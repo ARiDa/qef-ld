@@ -9,7 +9,7 @@
 			</ParameterList>
 		</op:Operator>
 
-		<op:Operator id="2" prod="4,3" type="">
+		<op:Operator id="2" prod="3,4" type="">
 			<Name>SetBindJoin</Name>
 			<ParameterList>
 				<maxActiveThreads>0</maxActiveThreads>

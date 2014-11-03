@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QEPTemplate xmlns="http://giga03.lncc.br/DIP/WP4/CoDIMS-D"
+	xmlns:op="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/Operator" xmlns:qep="http://giga03.lncc.br/DIP/WP4/CoDIMS-D/QEP">
+	<qep:QEP type="Initial">
+		<op:Operator id="1" prod="2" type="">
+			<Name>Project</Name>
+			<ParameterList>
+				<Variables>id_taxon, id_reg</Variables>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="2" prod="3,4" type="">
+			<Name>SetBindJoin</Name>
+			<ParameterList>
+				<maxActiveThreads>100</maxActiveThreads>
+				<blockSize>100</blockSize>
+			</ParameterList>
+		</op:Operator>
+	
+		<op:Operator id="3" prod="5,6" type="">
+			<Name>SetBindJoin</Name>
+			<ParameterList>
+				<maxActiveThreads>100</maxActiveThreads>
+				<blockSize>100</blockSize>
+			</ParameterList>
+		</op:Operator>
+		
+		<op:Operator id="4" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://dbpedia.org/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+				PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+				select distinct * where{
+                                ?id_dbpedia dbpedia-owl:kingdom ?kingdom .
+                                ?id_dbpedia dbpedia-owl:phylum ?phylum .
+                                }
+        		]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+		
+
+		<op:Operator id="5" prod="7,8" type="">
+			<Name>SetBindJoin</Name>
+			<ParameterList>
+				<maxActiveThreads>100</maxActiveThreads>
+				<blockSize>100</blockSize>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="6" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-taxon/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+				PREFIX pref: <http://localhost:2020/vocab/>
+				PREFIX owl:<http://www.w3.org/2002/07/owl#>
+                select distinct * where{
+                                ?id_taxon pref:peld_taxon_scientific_name  ?name .
+                                ?id_taxon  pref:peld_taxon_rank  ?rank.
+                                ?id_taxon owl:sameAs ?id_dbpedia .
+                                }
+                ]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="7" prod="9,10,11" type="">
+			<Name>Union</Name>
+			<ParameterList>
+				<useThreads>true</useThreads>
+			</ParameterList>
+		</op:Operator>
+
+		<op:Operator id="8" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-region/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+				PREFIX pref: <http://localhost:2020/vocab/>
+				select distinct * where{
+                                ?id_reg pref:peld_region_name_reg ?reg .
+                                }
+        		]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+		
+		
+		<op:Operator id="9" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-plankton/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+                          PREFIX pref: <http://localhost:2020/vocab/>
+                          select distinct ?id_taxon ?id_reg where{
+                                ?s pref:peld_analysis_id_taxon ?id_taxon.
+                                ?s pref:peld_analysis_id_collect ?id_an.
+                                ?id_an pref:peld_collect_local ?id_reg.
+                                FILTER EXISTS { ?id_taxon  pref:peld_taxon_rank  "Species" } .
+                                }
+                ]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+		<op:Operator id="10" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-catfish/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+                PREFIX pref: <http://localhost:2020/vocab/>
+                select distinct ?id_taxon ?id_reg where {
+                                ?s pref:peld_id_taxon ?id_taxon.
+                                ?s pref:peld_collect_local ?id_reg.
+                                FILTER EXISTS { ?id_taxon  pref:peld_taxon_rank  "Species" } .
+                                }
+                ]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+		<op:Operator id="11" prod="0" type="Scan" numberTuples="?">
+			<Name>Service</Name>
+			<ParameterList>
+				<DataSourceName>SparqlEndpoint</DataSourceName>
+				<ServiceURI>http://virtuoso.mooo.com/peld-fish/sparql</ServiceURI>
+				<SPARQLQuery>
+                <![CDATA[
+                PREFIX pref: <http://localhost:2020/vocab/>
+                select distinct ?id_taxon ?id_reg where {
+                                ?s pref:peld_fish_analysis_id_taxon ?id_taxon.
+                                ?s pref:peld_analysis_id_collect ?id_an .
+                                ?id_an pref:peld_fish_local_collect ?id_reg.
+                                FILTER EXISTS { ?id_taxon  pref:peld_taxon_rank  "Species" } .
+                                        }
+                ]]>
+				</SPARQLQuery>
+			</ParameterList>
+		</op:Operator>
+	</qep:QEP>
+</QEPTemplate>
